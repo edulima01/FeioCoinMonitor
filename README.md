@@ -1,2 +1,2 @@
 # FeioCoinMonitor
-Acompanhamento de crypto moedas
+Acompanhamento de crypto moedas.
