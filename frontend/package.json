@@ -9,7 +9,7 @@
     "build": "ng build",
     "test": "ng test",
     "lint-sass": "./node_modules/.bin/sass-lint -c linters/sass-lint.yml -v -q",
-    "lint": "npm run lint-sass && ng lint",
+    "lint": "npm run lint-sass && ng lint --type-check",
     "e2e": "ng e2e"
   },
   "private": true,
