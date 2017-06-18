@@ -1,0 +1,11 @@
+@import '~@angular/material/theming';
+
+$default-theme-primary: mat-palette($mat-teal);
+$default-theme-accent: mat-palette($mat-indigo);
+$default-theme-warn: mat-palette($mat-red);
+
+$default-theme: mat-light-theme($default-theme-primary, $default-theme-accent, $default-theme-warn);
+
+@mixin default-theme {
+	@include angular-material-theme($default-theme);
+}
