@@ -1,0 +1,19 @@
+<md-list>
+  <md-list-item *ngFor="let transaction of transactions">
+    <img md-list-avatar src="assets/symbols/{{transaction.value.asset.symbol}}.png" alt="{{transaction.value.asset.symbol}}">
+    <p md-line>
+      Em {{transaction.date | date}},
+	  <ng-container *ngIf="transaction.isDeposit()">depositou</ng-container>
+	  <ng-container *ngIf="transaction.isTransfer() && transaction.isDestination()">recebeu</ng-container>
+	  <ng-container *ngIf="transaction.isTransfer() && transaction.isOrigin()">enviou</ng-container>
+	  <ng-container *ngIf="transaction.isTrade()">comprou</ng-container>
+	  <ng-container *ngIf="transaction.isWithdraw()">sacou</ng-container>
+	  {{transaction.value | cryptoValue}}<ng-container *ngIf="transaction.isDeposit()">.</ng-container>
+	  <ng-container *ngIf="transaction.isTransfer() && transaction.isDestination() && transaction.origin"> da {{transaction.origin}}.</ng-container>
+	  <ng-container *ngIf="transaction.isTransfer() && transaction.isDestination() && !transaction.origin">no endereço {{transaction.address}}.</ng-container>
+	  <ng-container *ngIf="transaction.isTransfer() && transaction.isOrigin() && transaction.destination">para a {{transaction.destination}}.</ng-container>
+	  <ng-container *ngIf="transaction.isTransfer() && transaction.isOrigin() && !transaction.destination">para o endereço {{transaction.address}}.</ng-container>
+	  <ng-container *ngIf="transaction.isTrade()">por {{transaction.originValue | cryptoValue}} (incluindo uma taxa de {{transaction.feeValue | cryptoValue}}).</ng-container>
+    </p>
+  </md-list-item>
+</md-list>
